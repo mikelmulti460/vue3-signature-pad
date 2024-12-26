@@ -4,7 +4,6 @@
  </h1>
 </p>
 
-
 A Vue 3 based smooth signature drawing component.
 
 ## Installation
@@ -13,7 +12,7 @@ A Vue 3 based smooth signature drawing component.
 npm install @selemondev/vue3-signature-pad
 ```
 
-## Usage 
+## Usage
 
 ```ts
 <script setup lang="ts">
@@ -103,8 +102,7 @@ const handleAddWaterMark = () => {
 </template>
 ```
 
-## Props 
-
+## Props
 
 | name          |     type      |           default         |       description             |
 |:-------------:|:-------------:|:-------------------------:|   :-----------------:         |
@@ -134,10 +132,8 @@ const handleAddWaterMark = () => {
 | handleBeforeUpdateStroke |                  | Emits `Signature before update` before the drawing gets updated on the canvas.
 | handleAfterUpdateStroke |                  | Emits `Signature after update` after the drawing gets updated on the canvas.
 
-
 ## Credits go to these amazing projects
 
 - [Signature Pad](https://github.com/szimek/signature_pad)
 
 - [Vue 3 Signature](https://github.com/WangShayne/vue3-signature) - Vue 3 Signature Pad is an enhanced version of Vue 3 Signature with type safety and more options.
-
