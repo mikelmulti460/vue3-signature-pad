@@ -1,10 +1,10 @@
-<!-- eslint-disable ts/no-unused-expressions -->
 <!-- eslint-disable ts/ban-ts-comment -->
+<!-- eslint-disable ts/no-unused-expressions -->
 <script setup lang='ts'>
 import SignaturePad from 'signature_pad'
 import { nanoid } from 'nanoid'
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import type { CanvasOptions, Props, WaterMarkObj } from '../types'
+import type { CanvasOptions, Point, Props, Signature, WaterMarkObj } from '../types'
 
 defineOptions({
   name: 'VueSignaturePad',
@@ -34,8 +34,7 @@ const emits = defineEmits<{
 }>()
 
 const canvasOptions = ref<CanvasOptions>({
-  signaturePad: {
-  },
+  signaturePad: {} as Signature,
   dotSize: 0.5,
   minWidth: 2,
   maxWidth: 2,
@@ -47,29 +46,29 @@ const canvasOptions = ref<CanvasOptions>({
   canvasUuid: `canvas${nanoid()}`,
 })
 
-function isCanvasEmpty() {
-  return canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.isEmpty && canvasOptions.value.signaturePad.isEmpty()
+function isCanvasEmpty(): boolean {
+  return canvasOptions.value.signaturePad.isEmpty()
 }
 
-function saveSignature(format?: string) {
-  return format ? canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.toDataURL && canvasOptions.value.signaturePad.toDataURL(format) : canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.toDataURL && canvasOptions.value.signaturePad.toDataURL()
+function saveSignature(format?: string): string {
+  return format ? canvasOptions.value.signaturePad.toDataURL(format) : canvasOptions.value.signaturePad.toDataURL()
 }
 
 function clearCanvas() {
-  return canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.clear && canvasOptions.value.signaturePad.clear()
+  return canvasOptions.value.signaturePad.clear()
 }
 
-const canvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement | any
+const canvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement
 
 function fromDataURL(url: string) {
-  return canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.fromDataURL && canvasOptions.value.signaturePad.fromDataURL(url)
+  return canvasOptions.value.signaturePad.fromDataURL(url)
 }
 
 function undo() {
-  const canvasData: any = canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.toData && canvasOptions.value.signaturePad.toData()
+  const canvasData: Point[][] = canvasOptions.value.signaturePad.toData()
   if (canvasData.length) {
     canvasData.pop()
-    canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.fromData && canvasOptions.value.signaturePad.fromData(canvasData)
+    canvasOptions.value.signaturePad.fromData(canvasData)
   }
 };
 
@@ -85,22 +84,24 @@ function addWaterMark(data: WaterMarkObj) {
       sx: data.sx || 40,
       sy: data.sy || 40,
     }
-    const VCanvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement | any
-    const ctx = VCanvas!.getContext('2d')
-    ctx.font = data.font || '20px sans-serif'
-    ctx.fillStyle = data.fillStyle || '#333'
-    ctx.strokeStyle = data.strokeStyle || '#333'
-    if (data.style === 'all') {
-      ctx.fillText(textData.text, textData.x, textData.y)
-      ctx.strokeText(textData.text, textData.sx, textData.sy)
+    const VCanvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement
+    const ctx = VCanvas.getContext('2d')
+    if (ctx) {
+      ctx.font = data.font || '20px sans-serif'
+      ctx.fillStyle = data.fillStyle || '#333'
+      ctx.strokeStyle = data.strokeStyle || '#333'
+      if (data.style === 'all') {
+        ctx.fillText(textData.text, textData.x, textData.y)
+
+        ctx.strokeText(textData.text, textData.sx, textData.sy)
+      }
+      else if (data.style === 'stroke') {
+        ctx.strokeText(textData.text, textData.sx, textData.sy)
+      }
+      else {
+        ctx.fillText(textData.text, textData.x, textData.y)
+      }
     }
-    else if (data.style === 'stroke') {
-      ctx.strokeText(textData.text, textData.sx, textData.sy)
-    }
-    else {
-      ctx.fillText(textData.text, textData.x, textData.y)
-    }
-    // @ts-expect-error
     canvasOptions.value.signaturePad._isEmpty = false
   }
 }
@@ -121,33 +122,34 @@ function resizeCanvas(c: HTMLCanvasElement) {
 }
 
 function handleBeginStroke() {
-  return canvasOptions.value.signaturePad.addEventListener && canvasOptions.value.signaturePad.addEventListener('beginStroke', () => {
+  return canvasOptions.value.signaturePad.addEventListener('beginStroke', () => {
     emits('beginStroke', 'Signature started')
   })
 }
 
 function handleEndStroke() {
-  return canvasOptions.value.signaturePad.addEventListener && canvasOptions.value.signaturePad.addEventListener('endStroke', () => {
+  return canvasOptions.value.signaturePad.addEventListener('endStroke', () => {
     emits('endStroke', 'Signature ended')
   })
 }
 
 function handleBeforeUpdateStroke() {
-  return canvasOptions.value.signaturePad.addEventListener && canvasOptions.value.signaturePad.addEventListener('beforeUpdateStroke', () => {
+  return canvasOptions.value.signaturePad.addEventListener('beforeUpdateStroke', () => {
     emits('beforeUpdateStroke', 'Signature before update')
   })
 }
 
 function handleAfterUpdateStroke() {
-  return canvasOptions.value.signaturePad.addEventListener && canvasOptions.value.signaturePad.addEventListener('afterUpdateStroke', () => {
+  return canvasOptions.value.signaturePad.addEventListener('afterUpdateStroke', () => {
     emits('afterUpdateStroke', 'Signature after update')
   })
 }
 function draw() {
-  const canvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement | any
+  const canvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement
   if (!canvas) {
     throw new Error(`Canvas element with ID ${canvasOptions.value.canvasUuid} not found.`)
-  }
+  };
+  // @ts-expect-error
   canvasOptions.value.signaturePad = new SignaturePad(canvas, canvasOptions.value)
   handleBeginStroke()
   handleEndStroke()
@@ -162,10 +164,10 @@ function draw() {
     fromDataURL(props.defaultUrl)
   }
   if (props.disabled) {
-    canvasOptions.value.signaturePad.off && canvasOptions.value.signaturePad.off()
+    canvasOptions.value.signaturePad.off()
   }
   else {
-    canvasOptions.value.signaturePad.on && canvasOptions.value.signaturePad.on()
+    canvasOptions.value.signaturePad.on()
   }
 }
 
@@ -194,10 +196,10 @@ watch(
   () => props.disabled,
   (val) => {
     if (val) {
-      return canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.off && canvasOptions.value.signaturePad.off()
+      return canvasOptions.value.signaturePad.off()
     }
     else {
-      return canvasOptions.value.signaturePad && canvasOptions.value.signaturePad.on && canvasOptions.value.signaturePad.on()
+      return canvasOptions.value.signaturePad.on()
     }
   },
 )

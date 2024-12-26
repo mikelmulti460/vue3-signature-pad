@@ -2,7 +2,7 @@
 <script setup lang='ts'>
 import { onMounted, ref } from 'vue'
 import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
-import type { CanvasSignatureRef } from '@selemondev/vue3-signature-pad'
+import type { Signature } from '@selemondev/vue3-signature-pad'
 import GithubIcon from './components/icons/GithubIcon.vue'
 import PropsTable from './components/PropsTable.vue'
 import EventsTable from './components/EventsTable.vue'
@@ -27,32 +27,31 @@ const colors = [
     color: 'rgb(255, 85, 51)',
   },
 ]
-const signature = ref<CanvasSignatureRef>()
-const signatureLaptop = ref<CanvasSignatureRef>()
-const signatureTablet = ref<CanvasSignatureRef>()
-const signatureWaterMark = ref<CanvasSignatureRef>()
-const signatureWaterMarkTablet = ref<CanvasSignatureRef>()
-const signatureWaterMarkLaptop = ref<CanvasSignatureRef>()
+const signature = ref<Signature>()
+const signatureLaptop = ref<Signature>()
+const signatureTablet = ref<Signature>()
+const signatureWaterMark = ref<Signature>()
+const signatureWaterMarkTablet = ref<Signature>()
+const signatureWaterMarkLaptop = ref<Signature>()
 
 function handleUndoLaptop() {
-  return signatureLaptop.value?.undo && signatureLaptop.value?.undo()
+  return signatureLaptop.value?.undo()
 }
 
 function handleClearCanvasLaptop() {
-  return signatureLaptop.value?.clearCanvas && signatureLaptop.value?.clearCanvas()
+  return signatureLaptop.value?.clearCanvas()
 }
 
 function handleSaveSignatureLaptop() {
   return signatureLaptop.value?.saveSignature && alert(signatureLaptop.value?.saveSignature())
 }
 
-
 function handleUndoTablet() {
-  return signatureTablet.value?.undo && signatureTablet.value?.undo()
+  return signatureTablet.value?.undo()
 }
 
 function handleClearCanvasTablet() {
-  return signatureTablet.value?.clearCanvas && signatureTablet.value?.clearCanvas()
+  return signatureTablet.value?.clearCanvas()
 }
 
 function handleSaveSignatureTablet() {
@@ -60,38 +59,35 @@ function handleSaveSignatureTablet() {
 }
 
 function handleUndo() {
-  return signature.value?.undo && signature.value?.undo()
+  return signature.value?.undo()
 }
 
-
 function handleClearCanvas() {
-  return signature.value?.clearCanvas && signature.value?.clearCanvas()
+  return signature.value?.clearCanvas()
 }
 
 function handleSaveSignature() {
   return signature.value?.saveSignature && alert(signature.value?.saveSignature())
 }
 
-
 function handleUndoWaterMarkLaptop() {
-  return signatureWaterMarkLaptop.value?.undo && signatureWaterMarkLaptop.value?.undo()
+  return signatureWaterMarkLaptop.value?.undo()
 }
 
 function handleClearCanvasWaterMarkLaptop() {
-  return signatureWaterMarkLaptop.value?.clearCanvas && signatureWaterMarkLaptop.value?.clearCanvas()
+  return signatureWaterMarkLaptop.value?.clearCanvas()
 }
 
 function handleSaveSignatureWaterMarkLaptop() {
   return signatureWaterMarkLaptop.value?.saveSignature && alert(signatureWaterMarkLaptop.value?.saveSignature())
 }
 
-
 function handleUndoWaterMarkTablet() {
-  return signatureWaterMarkTablet.value?.undo && signatureWaterMarkTablet.value?.undo()
+  return signatureWaterMarkTablet.value?.undo()
 }
 
 function handleClearCanvasWaterMarkTablet() {
-  return signatureWaterMarkTablet.value?.clearCanvas && signatureWaterMarkTablet.value?.clearCanvas()
+  return signatureWaterMarkTablet.value?.clearCanvas()
 }
 
 function handleSaveSignatureWaterMarkTablet() {
@@ -99,12 +95,11 @@ function handleSaveSignatureWaterMarkTablet() {
 }
 
 function handleWaterMarkUndo() {
-  return signatureWaterMark.value?.undo && signatureWaterMark.value?.undo()
+  return signatureWaterMark.value?.undo()
 }
 
-
 function handleClearWaterMarkCanvas() {
-  return signatureWaterMark.value?.clearCanvas && signatureWaterMark.value?.clearCanvas()
+  return signatureWaterMark.value?.clearCanvas()
 }
 
 function handleSaveWaterMarkSignature() {
@@ -112,7 +107,7 @@ function handleSaveWaterMarkSignature() {
 }
 
 function handleAddWaterMark() {
-  return signatureWaterMark.value?.addWaterMark && signatureWaterMark.value.addWaterMark({
+  return signatureWaterMark.value?.addWaterMark({
     text: 'Selemondev',
     font: '20px Sans',
     style: 'all',
@@ -126,7 +121,7 @@ function handleAddWaterMark() {
 };
 
 function handleAddWaterMarkLaptop() {
-  return signatureWaterMarkLaptop.value?.addWaterMark && signatureWaterMarkLaptop.value.addWaterMark({
+  return signatureWaterMarkLaptop.value?.addWaterMark({
     text: 'Selemondev',
     font: '20px Sans',
     style: 'all',
@@ -140,7 +135,7 @@ function handleAddWaterMarkLaptop() {
 }
 
 function handleAddWaterMarkTablet() {
-  return signatureWaterMarkTablet.value?.addWaterMark && signatureWaterMarkTablet.value.addWaterMark({
+  return signatureWaterMarkTablet.value?.addWaterMark({
     text: 'Selemondev',
     font: '20px Sans',
     style: 'all',
@@ -156,7 +151,102 @@ function handleAddWaterMarkTablet() {
 const installCmd = ref(`npm install @selemondev/vue3-signature-pad`)
 const localImportSnippet = ref(`import { VueSignaturePad } from '@selemondev/vue3-signature-pad'`)
 const nuxiSnippet = ref(`npx nuxi@latest module add @selemondev/nuxt-signature-pad`)
-const vueSignaturePadTypes = ref(`export interface Options {
+const vueSignaturePadTypes = ref(`export interface Point {
+  x: number
+  y: number
+  time: number
+  color?: string | undefined
+  velocityFrom: (start: Point) => number
+  distanceTo: (start: Point) => number
+}
+
+export interface CurveControl {
+  c1: Point
+  c2: Point
+}
+
+export interface Bezier {
+  startPoint: Point
+  control1: CurveControl
+  control2: CurveControl
+  endPoint: Point
+  startWidth: number
+  endWidth: number
+  length: () => number
+  _point: (t: number, start: number, c1: number, c2: number, end: number) => number
+}
+
+export interface SignaturePadOptions {
+  /*
+   * (float or function) Radius of a single dot.
+   */
+  dotSize?: number | (() => number) | undefined
+
+  /*
+   * (float) Minimum width of a line. Defaults to 0.5.
+   */
+  minWidth?: number | undefined
+
+  /*
+   * (float) Maximum width of a line. Defaults to 2.5.
+   */
+  maxWidth?: number | undefined
+
+  /*
+   * (integer) Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
+   */
+  throttle?: number | undefined
+
+  /*
+   * (integer) Add the next point only if the previous one is farther than x pixels. Defaults to 5.
+   */
+  minDistance?: number | undefined
+
+  /*
+   * (string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to "rgba(0,0,0,0)" (transparent black). Use a non-transparent color e.g. "rgb(255,255,255)" (opaque white) if you'd like to save signatures as JPEG images.
+   */
+  backgroundColor?: string | undefined
+
+  /*
+   * (string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to "black".
+   */
+  penColor?: string | undefined
+
+  /*
+   * (float) Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
+   */
+  velocityFilterWeight?: number | undefined
+
+  /*
+   * (function) Callback when stroke begin.
+   */
+  onBegin?: ((event: MouseEvent) => void) | undefined
+
+  /*
+   * (function) Callback when stroke end.
+   */
+  onEnd?: ((event: MouseEvent) => void) | undefined
+}
+export interface BasicPoint {
+  x: number
+  y: number
+  pressure: number
+  time: number
+}
+export interface PointGroupOptions {
+  dotSize: number
+  minWidth: number
+  maxWidth: number
+  penColor: string
+  velocityFilterWeight: number
+  compositeOperation: GlobalCompositeOperation
+};
+
+export interface PointGroup extends PointGroupOptions {
+  points: BasicPoint[]
+}
+
+export interface Options {
   penColor: string
   backgroundColor: string
 }
@@ -173,31 +263,81 @@ export interface WaterMarkObj {
   sy: number
 }
 
-export interface SignatureRef {
-  addEventListener?: (type: string, listener: (event: Event) => void, options?: { once?: boolean }) => void
-  addWaterMark?: (obj: WaterMarkObj) => void
-  fromDataURL?: (url: string) => void
-  fromData?: (data: any[], options?: { clear: boolean }) => void
-  toDataURL?: (format?: string) => void
-  save?: (t: string) => void
-  toData?: () => void
-  clear?: () => void
-  isEmpty?: () => void
-  undo?: () => void
-  off?: () => void
-  on?: () => void
-  minWidth?: number
-  maxWidth?: number
-  penColor?: string
-}
-
-export interface CanvasSignatureRef {
-  isCanvasEmpty?: () => void
-  saveSignature?: (format?: string) => void
-  clearCanvas?: () => void
-  undo?: () => void
-  addWaterMark?: (obj: WaterMarkObj) => void
-  fromDataURL?: (url: string) => void
+export interface Signature {
+  backgroundColor: string
+  canvas: HTMLCanvasElement
+  dotSize: number | (() => number)
+  maxWidth: number
+  minDistance: number
+  minWidth: number
+  options: SignaturePadOptions
+  penColor: string
+  throttle: number
+  velocityFilterWeight: number
+  _ctx: CanvasRenderingContext2D
+  _data: Array<{
+    color: string
+    points: Point[]
+  }>
+  _isEmpty: boolean
+  _lastVelocity: number
+  _lastWidth: number
+  _mouseButtonDown: boolean
+  _points: Point[]
+  onBegin: (event: MouseEvent) => void
+  onEnd: (event: MouseEvent) => void
+  clear: () => void
+  fromDataURL: (
+    dataUrl: string,
+    options?: {
+      ratio?: number | undefined
+      width?: number | undefined
+      height?: number | undefined
+      callback?: ((error?: ErrorEvent) => void) | undefined
+    },
+  ) => void
+  toDataURL: (type?: string, encoderOptions?: any) => string
+  on: () => void
+  off: () => void
+  isEmpty: () => boolean
+  fromData: (pointGroups: Point[][]) => void
+  toData: () => Point[][]
+  _handleMouseDown: (event: MouseEvent) => void
+  _handleMouseMove: (event: MouseEvent) => void
+  _handleMouseUp: (event: MouseEvent) => void
+  _handleTouchStart: (event: MouseEvent) => void
+  _handleTouchMove: (event: MouseEvent) => void
+  _handleTouchEnd: (event: MouseEvent) => void
+  _strokeMoveUpdate: () => void
+  _strokeBegin: (event: MouseEvent) => void
+  _strokeUpdate: (event: MouseEvent) => void
+  _strokeEnd: (event: MouseEvent) => void
+  _handleMouseEvents: (event: MouseEvent) => void
+  _handleTouchEvents: (event: TouchEvent) => void
+  _reset: () => void
+  _createPoint: (x: number, y: number) => Point
+  _addPoint: (point: Point) => Bezier | null
+  _calculateCurveWidths: (
+    startPoint: Point,
+    endPoint: Point,
+  ) => { end: number, start: number }
+  _strokeWidth: (velocity: number) => number
+  _drawCurveSegment: (x: number, y: number, width: number) => void
+  _drawCurve: (_a: { color: string, curve: Bezier }) => void
+  _drawDot: (_a: { color: string, point: Point }) => void
+  _fromData: (
+    pointGroups: Point[][],
+    drawCurve: (_a: { color: string, curve: Bezier }) => void,
+    drawDot: (_a: { color: string, point: Point }) => void,
+  ) => void
+  _toSVG: () => string
+  addEventListener: (type: string, listener: (event: Event) => void, options?: { once?: boolean }) => void
+  addWaterMark: (obj: WaterMarkObj) => void
+  save: (t: string) => void
+  undo: () => void
+  isCanvasEmpty: () => boolean
+  saveSignature: (format?: string) => string
+  clearCanvas: () => void
 }
 
 export interface Props {
@@ -214,19 +354,20 @@ export interface Props {
 }
 
 export interface CanvasOptions {
-  signaturePad: SignatureRef
+  signaturePad: Signature
   throttle: number
   minWidth?: number
   maxWidth?: number
+  dotSize?: number
   option: Options
   canvasUuid: string
 }
 `)
 
 onMounted(() => {
-  handleAddWaterMark();
-  handleAddWaterMarkTablet();
-  handleAddWaterMarkLaptop();
+  handleAddWaterMark()
+  handleAddWaterMarkTablet()
+  handleAddWaterMarkLaptop()
 })
 </script>
 
@@ -270,7 +411,7 @@ onMounted(() => {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                 :clear-on-resize="true"
+                :clear-on-resize="true"
                 :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
@@ -290,7 +431,7 @@ onMounted(() => {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signature" height="400px" width="250px" :max-width="options.maxWidth"
-                 :clear-on-resize="true"
+                :clear-on-resize="true"
                 :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
@@ -404,7 +545,6 @@ onMounted(() => {
                 </svg>
               </button>
             </div>
-
           </div>
         </div>
         <div class="flex items-center justify-between w-full p-3 bg-white rounded-md">
@@ -487,7 +627,7 @@ onMounted(() => {
           code="<script setup lang='ts'>
 import { onMounted, ref } from 'vue'
 import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
-import type { CanvasSignatureRef } from '@selemondev/vue3-signature-pad'
+import type { CanvasSignature } from '@selemondev/vue3-signature-pad'
 
 const options = ref({
   penColor: 'rgb(0,0,0)',
@@ -507,18 +647,18 @@ const colors = [
     color: 'rgb(255, 85, 51)',
   },
 ]
-const signature = ref<CanvasSignatureRef>()
+const signature = ref<Signature>()
 
 function handleUndo() {
-  return signature.value?.undo && signature.value?.undo()
+  return signature.value?.undo()
 }
 
 function handleClearCanvas() {
-  return signature.value?.clearCanvas && signature.value?.clearCanvas()
+  return signature.value?.clearCanvas()
 }
 
 function handleSaveSignature() {
-  return signature.value?.saveSignature && alert(signature.value?.saveSignature())
+  return signature.value?.saveSignature() && alert(signature.value?.saveSignature())
 }
 
 </script>
@@ -677,7 +817,7 @@ function handleSaveSignature() {
         <h3 class="font-semibold">
           Props
         </h3>
-          <PropsTable />
+        <PropsTable />
       </div>
 
       <div class="space-y-3">
@@ -709,7 +849,7 @@ function handleSaveSignature() {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureWaterMarkLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                 :clear-on-resize="true"
+                :clear-on-resize="true"
                 :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
@@ -729,7 +869,7 @@ function handleSaveSignature() {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signatureWaterMark" height="400px" width="250px" :max-width="options.maxWidth"
-                 :clear-on-resize="true"
+                :clear-on-resize="true"
                 :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
@@ -843,7 +983,6 @@ function handleSaveSignature() {
                 </svg>
               </button>
             </div>
-
           </div>
         </div>
       </div>
