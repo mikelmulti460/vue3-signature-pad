@@ -1,9 +1,19 @@
 # Changelog
 
 
+<<<<<<< HEAD
 ## v1.1.1
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.0...v1.1.1)
+=======
+## v1.1.3
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.2...v1.1.3)
+
+## v1.1.2
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.0...v1.1.2)
+>>>>>>> 97f935f69d40f49dad4cf0e6bf812c414983b914
 
 ### 🩹 Fixes
 
@@ -15,6 +25,39 @@
 - Update package version and generate release ([a23e464](https://github.com/selemondev/vue3-signature-pad/commit/a23e464))
 - Remove lock file ([fec83bf](https://github.com/selemondev/vue3-signature-pad/commit/fec83bf))
 - Lint ([d2f0dbd](https://github.com/selemondev/vue3-signature-pad/commit/d2f0dbd))
+<<<<<<< HEAD
+=======
+- Update dep ([37d5fe8](https://github.com/selemondev/vue3-signature-pad/commit/37d5fe8))
+- Release v1.1.1 ([93c5b92](https://github.com/selemondev/vue3-signature-pad/commit/93c5b92))
+- **release:** V1.1.2 ([e285794](https://github.com/selemondev/vue3-signature-pad/commit/e285794))
+- **release:** V1.1.1 ([b8e73e6](https://github.com/selemondev/vue3-signature-pad/commit/b8e73e6))
+- Update dependencies ([3fa08a0](https://github.com/selemondev/vue3-signature-pad/commit/3fa08a0))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
+## v1.1.1
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.2...v1.1.1)
+
+## v1.1.2
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.0...v1.1.2)
+
+### 🩹 Fixes
+
+- Signature Pad types ([c9eb6ef](https://github.com/selemondev/vue3-signature-pad/commit/c9eb6ef))
+
+### 🏡 Chore
+
+- **release:** V1.1.0 ([8418d38](https://github.com/selemondev/vue3-signature-pad/commit/8418d38))
+- Update package version and generate release ([a23e464](https://github.com/selemondev/vue3-signature-pad/commit/a23e464))
+- Remove lock file ([fec83bf](https://github.com/selemondev/vue3-signature-pad/commit/fec83bf))
+- Lint ([d2f0dbd](https://github.com/selemondev/vue3-signature-pad/commit/d2f0dbd))
+- Update dep ([37d5fe8](https://github.com/selemondev/vue3-signature-pad/commit/37d5fe8))
+- Release v1.1.1 ([93c5b92](https://github.com/selemondev/vue3-signature-pad/commit/93c5b92))
+>>>>>>> 97f935f69d40f49dad4cf0e6bf812c414983b914
 
 ### ❤️ Contributors
 
