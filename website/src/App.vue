@@ -1,11 +1,11 @@
 <!-- eslint-disable no-alert -->
 <script setup lang='ts'>
-import { onMounted, ref } from 'vue'
-import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
 import type { Signature } from '@selemondev/vue3-signature-pad'
+import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
+import { onMounted, ref } from 'vue'
+import EventsTable from './components/EventsTable.vue'
 import GithubIcon from './components/icons/GithubIcon.vue'
 import PropsTable from './components/PropsTable.vue'
-import EventsTable from './components/EventsTable.vue'
 
 const options = ref({
   penColor: 'rgb(0,0,0)',
