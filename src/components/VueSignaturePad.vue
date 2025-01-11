@@ -183,14 +183,14 @@ watch(() => props.minWidth, (newVal) => {
     canvasOptions.value.minWidth = newVal
     canvasOptions.value.signaturePad.minWidth = newVal
   }
-})
+}, { immediate: true })
 
 watch(() => props.maxWidth, (newVal) => {
   if (newVal) {
     canvasOptions.value.maxWidth = newVal
     canvasOptions.value.signaturePad.maxWidth = newVal
   }
-})
+}, { immediate: true })
 
 watch(
   () => props.disabled,
