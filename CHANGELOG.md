@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v1.1.5
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.3...v1.1.5)
+
+### 🩹 Fixes
+
+- Properly initialize stroke thickness ([2ea866c](https://github.com/selemondev/vue3-signature-pad/commit/2ea866c))
+- PenColor initialization ([1594219](https://github.com/selemondev/vue3-signature-pad/commit/1594219))
+
+### 🏡 Chore
+
+- **release:** V1.1.1 ([5870f6e](https://github.com/selemondev/vue3-signature-pad/commit/5870f6e))
+- Update website dep ([4f52084](https://github.com/selemondev/vue3-signature-pad/commit/4f52084))
+- Update CHANGELOG and pnpm-lock.yaml file ([f172109](https://github.com/selemondev/vue3-signature-pad/commit/f172109))
+- Update package.json file ([98dd1b0](https://github.com/selemondev/vue3-signature-pad/commit/98dd1b0))
+- **release:** V1.1.4 ([086caae](https://github.com/selemondev/vue3-signature-pad/commit/086caae))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+- Lemio Chen <lemio.chen@aiplux.com>
+
 ## v1.1.4
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.3...v1.1.4)
