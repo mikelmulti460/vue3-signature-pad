@@ -43,8 +43,8 @@ importers:
   website:
     dependencies:
       '@selemondev/vue3-signature-pad':
-        specifier: ^1.1.4
-        version: 1.1.4(vue@3.5.13(typescript@5.3.3))
+        specifier: ^1.1.5
+        version: 1.1.5(vue@3.5.13(typescript@5.3.3))
       '@wdns/vue-code-block':
         specifier: ^2.3.2
         version: 2.3.5(typescript@5.3.3)
@@ -673,8 +673,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@selemondev/vue3-signature-pad@1.1.4':
-    resolution: {integrity: sha512-ej2+FPhWn3oXJ/eUnyHAM3EHgRG/E1sr9LXKgSsxQG8PfwYpgcBkJs5JXJ9chMXC8TJ1lXSYWwyggGwbl2lqFg==}
+  '@selemondev/vue3-signature-pad@1.1.5':
+    resolution: {integrity: sha512-AJxajgLzeKQ/fDr4605vCJt44BucFLLKLmQ1XMUDajFu3C8mkSqmnDzpb6EM1GbZxXxAxEFA4pPHoQ8tuT0Pow==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -2904,7 +2904,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.29.1':
     optional: true
 
-  '@selemondev/vue3-signature-pad@1.1.4(vue@3.5.13(typescript@5.3.3))':
+  '@selemondev/vue3-signature-pad@1.1.5(vue@3.5.13(typescript@5.3.3))':
     dependencies:
       nanoid: 5.0.9
       signature_pad: 5.0.4

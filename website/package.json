@@ -10,7 +10,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@selemondev/vue3-signature-pad": "^1.1.4",
+    "@selemondev/vue3-signature-pad": "^1.1.5",
     "@wdns/vue-code-block": "^2.3.2",
     "vue": "^3.4.21"
   },
