@@ -373,7 +373,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class=" bg-stone-100/90">
+  <div class=" bg-[#eee]">
     <div class="max-w-screen-lg px-4 py-6 mx-auto space-y-4">
       <div class="space-y-2 md:flex md:justify-between">
         <div>
@@ -609,9 +609,7 @@ onMounted(() => {
         <p class="text-sm">
           Register it as a local component as shown below and you are good to go 🎉:
         </p>
-        <CustomCodeBlock
-          :code="localImportSnippet" lang="javascript"
-        />
+        <CustomCodeBlock :code="localImportSnippet" lang="javascript" />
       </div>
 
       <div class="space-y-1">
@@ -811,12 +809,10 @@ function handleSaveSignature() {
           dev
           dependency:
         </p>
-        <CustomCodeBlock
-          :code="nuxiSnippet" lang="bash"
-        />
-        <CustomCodeBlock
-          code="npm install --save-dev Typescript" lang="bash"
-        />
+        <div class="flex flex-col space-y-3">
+          <CustomCodeBlock :code="nuxiSnippet" lang="bash" />
+          <CustomCodeBlock code="npm install --save-dev Typescript" lang="bash" />
+        </div>
       </div>
 
       <div class="space-y-3">
@@ -846,9 +842,7 @@ function handleSaveSignature() {
           code="import type { CanvasOptions, Props, WaterMarkObj, ..... } from @selemondev/vue3-signature-pad"
           lang="typescript"
         />
-        <CustomCodeBlock
-          :code="vueSignaturePadTypes" lang="typescript"
-        />
+        <CustomCodeBlock :code="vueSignaturePadTypes" lang="typescript" />
       </div>
 
       <div class="space-y-3">
@@ -1028,7 +1022,7 @@ html.dark .shiki span {
 
 pre {
   z-index: 1;
-  padding: 24px;
+  padding: 16px 24px;
   border-radius: 10px;
   overflow-x: auto;
   -ms-overflow-style: none;
