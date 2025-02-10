@@ -3,6 +3,7 @@
 import type { Signature } from '@selemondev/vue3-signature-pad'
 import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
 import { onMounted, ref } from 'vue'
+import CustomCodeBlock from './components/CustomCodeBlock.vue'
 import EventsTable from './components/EventsTable.vue'
 import GithubIcon from './components/icons/GithubIcon.vue'
 import PropsTable from './components/PropsTable.vue'
@@ -411,8 +412,7 @@ onMounted(() => {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -421,8 +421,7 @@ onMounted(() => {
             <div class="hidden md:block lg:hidden">
               <VueSignaturePad
                 ref="signatureTablet" height="400px" width="695px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -431,14 +430,13 @@ onMounted(() => {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signature" height="400px" width="250px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
             </div>
 
-            <div class="absolute block md:hidden flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute md:hidden flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleUndo"
@@ -474,7 +472,7 @@ onMounted(() => {
               </button>
             </div>
 
-            <div class="absolute hidden md:block lg:hidden flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute md:block lg:hidden flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleUndoTablet"
@@ -510,7 +508,7 @@ onMounted(() => {
               </button>
             </div>
 
-            <div class="absolute hidden lg:block flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute lg:block flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleUndoLaptop"
@@ -602,7 +600,7 @@ onMounted(() => {
         <h2 class="text-lg font-semibold">
           Installation
         </h2>
-        <VCodeBlock :code="installCmd" highlightjs lang="bash" theme="atom-one-light" />
+        <CustomCodeBlock :code="installCmd" lang="bash" />
       </div>
       <div class="space-y-1">
         <h3 class="font-semibold">
@@ -611,7 +609,9 @@ onMounted(() => {
         <p class="text-sm">
           Register it as a local component as shown below and you are good to go 🎉:
         </p>
-        <VCodeBlock :code="localImportSnippet" highlightjs lang="javascript" theme="atom-one-light" />
+        <CustomCodeBlock
+          :code="localImportSnippet" lang="javascript"
+        />
       </div>
 
       <div class="space-y-1">
@@ -620,10 +620,13 @@ onMounted(() => {
         </h3>
 
         <p class="text-sm">
-          You can get the svgs from the <a href="https://icones.js.org/" target="_blank" class="text-blue-500 underline transition-all duration-200 ease-in hover:text-blue-600">Icones</a> library.
+          You can get the svgs from the <a
+            href="https://icones.js.org/" target="_blank"
+            class="text-blue-500 underline transition-all duration-200 ease-in hover:text-blue-600"
+          >Icones</a> library.
         </p>
 
-        <VCodeBlock
+        <CustomCodeBlock
           code="<script setup lang='ts'>
 import { onMounted, ref } from 'vue'
 import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
@@ -795,10 +798,7 @@ function handleSaveSignature() {
       </div>
     </div>
   </div>
-</template>"
-          highlightjs
-          lang="javascript"
-          theme="atom-one-light"
+</template>" lang="vue"
         />
       </div>
 
@@ -807,10 +807,16 @@ function handleSaveSignature() {
           Nuxt 3
         </h3>
         <p class="text-sm">
-          If you are using Nuxt 3, you can simply install it by using nuxi as shown below and also add TypeScript as a dev dependency:
+          If you are using Nuxt 3, you can simply install it by using nuxi as shown below and also add TypeScript as a
+          dev
+          dependency:
         </p>
-        <VCodeBlock :code="nuxiSnippet" highlightjs lang="typescript" theme="atom-one-light" />
-        <VCodeBlock code="npm install --save-dev Typescript" highlightjs lang="typescript" theme="atom-one-light" />
+        <CustomCodeBlock
+          :code="nuxiSnippet" lang="bash"
+        />
+        <CustomCodeBlock
+          code="npm install --save-dev Typescript" lang="bash"
+        />
       </div>
 
       <div class="space-y-3">
@@ -832,11 +838,16 @@ function handleSaveSignature() {
           TypeScript
         </h3>
         <p class="text-sm">
-          If you are using TypeScript, below are the types that can be imported from `@selemondev/vue3-signature-pad` as shown below:
+          If you are using TypeScript, below are the types that can be imported from `@selemondev/vue3-signature-pad` as
+          shown
+          below:
         </p>
-        <VCodeBlock code="import type { CanvasOptions, Props, WaterMarkObj, ..... } from @selemondev/vue3-signature-pad" highlightjs lang="typescript" theme="atom-one-light" />
-        <VCodeBlock
-          :code="vueSignaturePadTypes" highlightjs lang="typescript" theme="atom-one-light"
+        <CustomCodeBlock
+          code="import type { CanvasOptions, Props, WaterMarkObj, ..... } from @selemondev/vue3-signature-pad"
+          lang="typescript"
+        />
+        <CustomCodeBlock
+          :code="vueSignaturePadTypes" lang="typescript"
         />
       </div>
 
@@ -849,8 +860,7 @@ function handleSaveSignature() {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureWaterMarkLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -859,8 +869,7 @@ function handleSaveSignature() {
             <div class="hidden md:block lg:hidden">
               <VueSignaturePad
                 ref="signatureWaterMarkTablet" height="400px" width="695px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -869,14 +878,13 @@ function handleSaveSignature() {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signatureWaterMark" height="400px" width="250px" :max-width="options.maxWidth"
-                :clear-on-resize="true"
-                :min-width="options.minWidth" :options="{
+                :clear-on-resize="true" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
             </div>
 
-            <div class="absolute block md:hidden flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute md:hidden flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleWaterMarkUndo"
@@ -912,7 +920,7 @@ function handleSaveSignature() {
               </button>
             </div>
 
-            <div class="absolute hidden md:block lg:hidden flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute md:block lg:hidden flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleUndoWaterMarkTablet"
@@ -948,7 +956,7 @@ function handleSaveSignature() {
               </button>
             </div>
 
-            <div class="absolute hidden lg:block flex flex-col space-y-2 top-3 right-4">
+            <div class="absolute lg:block flex flex-col space-y-2 top-3 right-4">
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
                 @click="handleUndoWaterMarkLaptop"
@@ -989,3 +997,49 @@ function handleSaveSignature() {
     </div>
   </div>
 </template>
+
+<style>
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.shiki--code--block {
+  width: 100%;
+}
+
+pre {
+  z-index: 1;
+  padding: 24px;
+  border-radius: 10px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+  background-color: #F9F9F9 !important;
+}
+
+code {
+  display: block;
+  line-height: 1.7;
+  font-size: 15px;
+}
+</style>
