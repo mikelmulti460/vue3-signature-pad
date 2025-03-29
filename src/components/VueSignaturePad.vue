@@ -4,7 +4,7 @@
 import type { CanvasOptions, Point, Props, Signature, WaterMarkObj } from '../types'
 import { nanoid } from 'nanoid'
 import SignaturePad from 'signature_pad'
-import { onBeforeUnmount, onMounted, ref, toRef, toRefs, watch, watchEffect } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch, watchEffect } from 'vue'
 
 defineOptions({
   name: 'VueSignaturePad',

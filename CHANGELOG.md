@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v1.2.0
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.5...v1.2.0)
+
+### 🚀 Enhancements
+
+- Use shiki code block ([596b3f0](https://github.com/selemondev/vue3-signature-pad/commit/596b3f0))
+
+### 🩹 Fixes
+
+- VueSignaturePad component to pass backgroundColor properly to the signature_pad options ([7c8037f](https://github.com/selemondev/vue3-signature-pad/commit/7c8037f))
+- Properly passing options to signature_pad ([5656043](https://github.com/selemondev/vue3-signature-pad/commit/5656043))
+
+### 🏡 Chore
+
+- **release:** V1.1.4 ([086caae](https://github.com/selemondev/vue3-signature-pad/commit/086caae))
+- **release:** V1.1.5 ([5f69a91](https://github.com/selemondev/vue3-signature-pad/commit/5f69a91))
+- Update website dependency ([769c5ee](https://github.com/selemondev/vue3-signature-pad/commit/769c5ee))
+- Pnpm-lock file ([a1a9103](https://github.com/selemondev/vue3-signature-pad/commit/a1a9103))
+- **deps-dev:** Bump vite from 5.4.14 to 5.4.15 ([19f9a97](https://github.com/selemondev/vue3-signature-pad/commit/19f9a97))
+
+### 🎨 Styles
+
+- Change code block padding ([70e8b5b](https://github.com/selemondev/vue3-signature-pad/commit/70e8b5b))
+
+### ❤️ Contributors
+
+- Arnaud Gissinger ([@mathix420](https://github.com/mathix420))
+- Selemondev <selemondev19@gmail.com>
+
 ## v1.1.5
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.3...v1.1.5)
