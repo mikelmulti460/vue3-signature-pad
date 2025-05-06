@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: 5,
   height: '100%',
   width: '100%',
-  option: {
+  options: {
     backgroundColor: 'rgb(255,255,255)',
     penColor: 'rgb(0, 0, 0)',
   },
