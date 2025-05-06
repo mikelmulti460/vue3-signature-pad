@@ -46,8 +46,8 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2
       '@selemondev/vue3-signature-pad':
-        specifier: ^1.1.5
-        version: 1.1.5(vue@3.5.13(typescript@5.3.3))
+        specifier: ^1.2.3
+        version: 1.2.3
       shiki-code-block-vue:
         specifier: 0.0.6-beta.1
         version: 0.0.6-beta.1(@vue/tsconfig@0.7.0(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3)))(shiki@2.3.2)(vue-tsc@2.2.0(typescript@5.3.3))(vue@3.5.13(typescript@5.3.3))
@@ -940,10 +940,8 @@ packages:
   '@selemondev/shiki-transformer-copy-button@0.0.2':
     resolution: {integrity: sha512-tBO3XW5BotqwQJUDMK0lJecjhVTff7dCM644dc509IfEjVzB1EsCmjv7d3Ps9JyF1VatSF3gZ7TCOdY+hTxsgw==}
 
-  '@selemondev/vue3-signature-pad@1.1.5':
-    resolution: {integrity: sha512-AJxajgLzeKQ/fDr4605vCJt44BucFLLKLmQ1XMUDajFu3C8mkSqmnDzpb6EM1GbZxXxAxEFA4pPHoQ8tuT0Pow==}
-    peerDependencies:
-      vue: ^3.2.0
+  '@selemondev/vue3-signature-pad@1.2.3':
+    resolution: {integrity: sha512-mg9Oy3j0SvujFHalwtGnoCFIdsyvQ0afQ3juPEek5V22zYdo4tp2+makVQOxkRnqU50/hDXDZ862OEzMlm41fA==}
 
   '@shikijs/core@2.3.2':
     resolution: {integrity: sha512-s7vyL3LzUKm3Qwf36zRWlavX9BQMZTIq9B1almM63M5xBuSldnsTHCmsXzoF/Kyw4k7Xgas7yAyJz9VR/vcP1A==}
@@ -3372,11 +3370,10 @@ snapshots:
     dependencies:
       hastscript: 9.0.0
 
-  '@selemondev/vue3-signature-pad@1.1.5(vue@3.5.13(typescript@5.3.3))':
+  '@selemondev/vue3-signature-pad@1.2.3':
     dependencies:
       nanoid: 5.0.9
       signature_pad: 5.0.4
-      vue: 3.5.13(typescript@5.3.3)
 
   '@shikijs/core@2.3.2':
     dependencies:

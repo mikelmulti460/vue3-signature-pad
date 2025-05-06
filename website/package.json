@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@selemondev/shiki-transformer-copy-button": "^0.0.2",
-    "@selemondev/vue3-signature-pad": "^1.1.5",
+    "@selemondev/vue3-signature-pad": "^1.2.3",
     "shiki-code-block-vue": "0.0.6-beta.1",
     "vue": "^3.4.21"
   },
