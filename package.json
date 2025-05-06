@@ -1,7 +1,7 @@
 {
   "name": "@selemondev/vue3-signature-pad",
   "type": "module",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "private": false,
   "packageManager": "pnpm@9.15.2",
   "description": "Vue 3 based smooth signature drawing component ✨",
@@ -44,10 +44,8 @@
     "generate:release": "npx changelogen@latest --release && npm publish",
     "prepublishOnly": "pnpm build"
   },
-  "peerDependencies": {
-    "vue": "^3.2.0"
-  },
   "dependencies": {
+    "@selemondev/vue3-signature-pad": "^1.2.1",
     "nanoid": "^5.0.9",
     "signature_pad": "^5.0.4"
   },

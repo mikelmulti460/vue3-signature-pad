@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.2.3
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.2.2...v1.2.3)
+
+### 💅 Refactors
+
+- Prop default ([e27a814](https://github.com/selemondev/vue3-signature-pad/commit/e27a814))
+
+### 🏡 Chore
+
+- **deps-dev:** Bump vite from 5.4.15 to 5.4.17 ([f239ebf](https://github.com/selemondev/vue3-signature-pad/commit/f239ebf))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
 ## v1.2.0
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.1.5...v1.2.0)
