@@ -9,6 +9,28 @@
 
 - Prop default ([e27a814](https://github.com/selemondev/vue3-signature-pad/commit/e27a814))
 
+### 📖 Documentation
+
+- Update props section ([bc4d3c3](https://github.com/selemondev/vue3-signature-pad/commit/bc4d3c3))
+
+### 🏡 Chore
+
+- **deps-dev:** Bump vite from 5.4.15 to 5.4.17 ([f239ebf](https://github.com/selemondev/vue3-signature-pad/commit/f239ebf))
+- Update lockfile ([c6547f5](https://github.com/selemondev/vue3-signature-pad/commit/c6547f5))
+- Update ([f533bca](https://github.com/selemondev/vue3-signature-pad/commit/f533bca))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
+## v1.2.3
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.2.2...v1.2.3)
+
+### 💅 Refactors
+
+- Prop default ([e27a814](https://github.com/selemondev/vue3-signature-pad/commit/e27a814))
+
 ### 🏡 Chore
 
 - **deps-dev:** Bump vite from 5.4.15 to 5.4.17 ([f239ebf](https://github.com/selemondev/vue3-signature-pad/commit/f239ebf))
