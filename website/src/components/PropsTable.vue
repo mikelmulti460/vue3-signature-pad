@@ -20,7 +20,7 @@
       <tbody class="bg-white">
         <tr>
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300">
-            option
+            options
           </td>
           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300">
             Object
