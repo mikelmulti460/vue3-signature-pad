@@ -17,10 +17,10 @@ const props = withDefaults(defineProps<Props>(), {
   maxWidth: 5,
   height: '100%',
   width: '100%',
-  options: {
+  options: () => ({
     backgroundColor: 'rgb(255,255,255)',
     penColor: 'rgb(0, 0, 0)',
-  },
+  }),
   disabled: false,
   clearOnResize: false,
   defaultUrl: '',
