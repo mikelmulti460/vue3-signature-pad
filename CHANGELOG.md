@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v1.3.1
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.3.0...v1.3.1)
+
+### 📖 Documentation
+
+- Update README ([ca804a4](https://github.com/selemondev/vue3-signature-pad/commit/ca804a4))
+- Update README ([f3841c8](https://github.com/selemondev/vue3-signature-pad/commit/f3841c8))
+
+### 🏡 Chore
+
+- Update dependency ([94c55e3](https://github.com/selemondev/vue3-signature-pad/commit/94c55e3))
+- Update lock file ([7ca243c](https://github.com/selemondev/vue3-signature-pad/commit/7ca243c))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
 ## v1.3.0
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.2.4...v1.3.0)
