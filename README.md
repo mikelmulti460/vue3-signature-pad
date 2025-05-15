@@ -94,7 +94,7 @@ const handleAddWaterMark = () => {
        <button type="button" @click="handleUndo">Undo</button>
        <button type="button" @click="handleDisabled">Disabled</button>
        <button type="button" @click="handleFromDataURL('https://github.com/selemondev.png')">
-       FronData URL
+       FromData URL
        </button>
        <button type="button" @click="handleAddWaterMark">Add watermark</button>
     </div>

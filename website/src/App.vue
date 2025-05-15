@@ -44,13 +44,7 @@ function handleClearCanvasLaptop() {
 }
 
 function handleSaveSignatureLaptop(format?: string) {
-  const dataURL = signatureLaptop.value?.saveSignature(format)
-  const link = document.createElement('a')
-  link.href = dataURL ?? ''
-  link.download = `signature-${nanoid()?.slice(0, 4)}`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  return signatureLaptop.value?.saveSignature(format)
 }
 
 function handleUndoTablet() {
@@ -86,13 +80,7 @@ function handleClearCanvasWaterMarkLaptop() {
 }
 
 function handleSaveSignatureWaterMarkLaptop(format?: string) {
-  const dataURL = signatureWaterMarkLaptop.value?.saveSignature(format)
-  const link = document.createElement('a')
-  link.href = dataURL ?? ''
-  link.download = `signature-${nanoid()?.slice(0, 4)}`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  return signatureWaterMarkLaptop.value?.saveSignature(format)
 }
 
 function handleUndoWaterMarkTablet() {
@@ -104,13 +92,7 @@ function handleClearCanvasWaterMarkTablet() {
 }
 
 function handleSaveSignatureWaterMarkTablet(format?: string) {
-  const dataURL = signatureWaterMarkTablet.value?.saveSignature(format)
-  const link = document.createElement('a')
-  link.href = dataURL ?? ''
-  link.download = `signature-${nanoid()?.slice(0, 4)}`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  return signatureWaterMarkTablet.value?.saveSignature(format)
 }
 
 function handleWaterMarkUndo() {
@@ -122,13 +104,7 @@ function handleClearWaterMarkCanvas() {
 }
 
 function handleSaveWaterMarkSignature(format?: string) {
-  const dataURL = signatureWaterMark.value?.saveSignature(format)
-  const link = document.createElement('a')
-  link.href = dataURL ?? ''
-  link.download = `signature-${nanoid()?.slice(0, 4)}`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
+  return signatureWaterMark.value?.saveSignature(format)
 }
 
 function handleAddWaterMark() {
@@ -436,7 +412,7 @@ onMounted(() => {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -445,7 +421,7 @@ onMounted(() => {
             <div class="hidden md:block lg:hidden">
               <VueSignaturePad
                 ref="signatureTablet" height="400px" width="695px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -454,7 +430,7 @@ onMounted(() => {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signature" height="400px" width="250px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -878,7 +854,7 @@ function handleSaveSignature() {
             <div class="hidden lg:block">
               <VueSignaturePad
                 ref="signatureWaterMarkLaptop" height="400px" width="950px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -887,7 +863,7 @@ function handleSaveSignature() {
             <div class="hidden md:block lg:hidden">
               <VueSignaturePad
                 ref="signatureWaterMarkTablet" height="400px" width="695px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
@@ -896,7 +872,7 @@ function handleSaveSignature() {
             <div class="block md:hidden">
               <VueSignaturePad
                 ref="signatureWaterMark" height="400px" width="250px" :max-width="options.maxWidth"
-                :clear-on-resize="true" :min-width="options.minWidth" :options="{
+                :clear-on-resize="false" :min-width="options.minWidth" :options="{
                   penColor: options.penColor, backgroundColor: options.backgroundColor,
                 }"
               />
