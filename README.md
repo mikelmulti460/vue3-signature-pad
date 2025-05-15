@@ -45,13 +45,13 @@ const activeColor = ref();
 
 const signature = ref();
 
-const handleSave = (t: string) => {
-  return console.log(signature.value.undo())
+const handleSave = (format?: string) => {
+  return signature.value.saveSignature(format)
 };
-const handleClear = (t: string) => {
+const handleClear = () => {
   return signature.value.clearCanvas()
 };
-const handleUndo = (t: string) => {
+const handleUndo = () => {
   return signature.value.undo()
 };
 
@@ -64,7 +64,7 @@ const handleFromDataURL = (url: string) => {
 };
 
 const handleAddWaterMark = () => {
-    return signature1.value.addWaterMark({
+    return signature.value.addWaterMark({
     text: "Selemondev",          // watermark text, > default ''
     font: "20px Arial",         // mark font, > default '20px sans-serif'
     style: 'all',               // fillText and strokeText,  'all'/'stroke'/'fill', > default 'fill
