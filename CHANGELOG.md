@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.2.4
+
+[compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.2.3...v1.2.4)
+
+### 🏡 Chore
+
+- Update dependencies ([33090c5](https://github.com/selemondev/vue3-signature-pad/commit/33090c5))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
 ## v1.2.3
 
 [compare changes](https://github.com/selemondev/vue3-signature-pad/compare/v1.2.2...v1.2.3)
