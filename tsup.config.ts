@@ -8,6 +8,7 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   dts: false,
+  minify: true,
   esbuildPlugins: [
     vuePlugin({
       isProduction: true,
