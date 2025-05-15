@@ -7,8 +7,8 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  dts: false,
   minify: true,
+  dts: false,
   esbuildPlugins: [
     vuePlugin({
       isProduction: true,

@@ -48,8 +48,8 @@ function isCanvasEmpty(): boolean {
   return canvasOptions.value.signaturePad.isEmpty()
 }
 
-function saveSignature(format?: string): string {
-  return format ? canvasOptions.value.signaturePad.toDataURL(format) : canvasOptions.value.signaturePad.toDataURL()
+function saveSignature(format?: string) {
+  return format ? canvasOptions.value.signaturePad.toDataURL(format) : canvasOptions.value.signaturePad?.toDataURL()
 }
 
 function clearCanvas() {

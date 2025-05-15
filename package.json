@@ -48,7 +48,7 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@selemondev/vue3-signature-pad": "^1.2.1",
+    "@selemondev/vue3-signature-pad": "^1.2.4",
     "nanoid": "^5.0.9",
     "signature_pad": "^5.0.4"
   },

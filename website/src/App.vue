@@ -2,6 +2,7 @@
 <script setup lang='ts'>
 import type { Signature } from '@selemondev/vue3-signature-pad'
 import { VueSignaturePad } from '@selemondev/vue3-signature-pad'
+import { nanoid } from 'nanoid'
 import { onMounted, ref } from 'vue'
 import CustomCodeBlock from './components/CustomCodeBlock.vue'
 import EventsTable from './components/EventsTable.vue'
@@ -34,7 +35,6 @@ const signatureTablet = ref<Signature>()
 const signatureWaterMark = ref<Signature>()
 const signatureWaterMarkTablet = ref<Signature>()
 const signatureWaterMarkLaptop = ref<Signature>()
-
 function handleUndoLaptop() {
   return signatureLaptop.value?.undo()
 }
@@ -43,8 +43,14 @@ function handleClearCanvasLaptop() {
   return signatureLaptop.value?.clearCanvas()
 }
 
-function handleSaveSignatureLaptop() {
-  return signatureLaptop.value?.saveSignature && alert(signatureLaptop.value?.saveSignature())
+function handleSaveSignatureLaptop(format?: string) {
+  const dataURL = signatureLaptop.value?.saveSignature(format)
+  const link = document.createElement('a')
+  link.href = dataURL ?? ''
+  link.download = `signature-${nanoid()?.slice(0, 4)}`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
 function handleUndoTablet() {
@@ -56,7 +62,7 @@ function handleClearCanvasTablet() {
 }
 
 function handleSaveSignatureTablet() {
-  return signatureTablet.value?.saveSignature && alert(signatureTablet.value?.saveSignature())
+  return signatureTablet.value?.saveSignature()
 }
 
 function handleUndo() {
@@ -67,8 +73,8 @@ function handleClearCanvas() {
   return signature.value?.clearCanvas()
 }
 
-function handleSaveSignature() {
-  return signature.value?.saveSignature && alert(signature.value?.saveSignature())
+function handleSaveSignature(format: string) {
+  return signature.value?.saveSignature(format)
 }
 
 function handleUndoWaterMarkLaptop() {
@@ -79,8 +85,14 @@ function handleClearCanvasWaterMarkLaptop() {
   return signatureWaterMarkLaptop.value?.clearCanvas()
 }
 
-function handleSaveSignatureWaterMarkLaptop() {
-  return signatureWaterMarkLaptop.value?.saveSignature && alert(signatureWaterMarkLaptop.value?.saveSignature())
+function handleSaveSignatureWaterMarkLaptop(format?: string) {
+  const dataURL = signatureWaterMarkLaptop.value?.saveSignature(format)
+  const link = document.createElement('a')
+  link.href = dataURL ?? ''
+  link.download = `signature-${nanoid()?.slice(0, 4)}`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
 function handleUndoWaterMarkTablet() {
@@ -91,8 +103,14 @@ function handleClearCanvasWaterMarkTablet() {
   return signatureWaterMarkTablet.value?.clearCanvas()
 }
 
-function handleSaveSignatureWaterMarkTablet() {
-  return signatureWaterMarkTablet.value?.saveSignature && alert(signatureWaterMarkTablet.value?.saveSignature())
+function handleSaveSignatureWaterMarkTablet(format?: string) {
+  const dataURL = signatureWaterMarkTablet.value?.saveSignature(format)
+  const link = document.createElement('a')
+  link.href = dataURL ?? ''
+  link.download = `signature-${nanoid()?.slice(0, 4)}`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
 function handleWaterMarkUndo() {
@@ -103,8 +121,14 @@ function handleClearWaterMarkCanvas() {
   return signatureWaterMark.value?.clearCanvas()
 }
 
-function handleSaveWaterMarkSignature() {
-  return signatureWaterMark.value?.saveSignature && alert(signatureWaterMark.value?.saveSignature())
+function handleSaveWaterMarkSignature(format?: string) {
+  const dataURL = signatureWaterMark.value?.saveSignature(format)
+  const link = document.createElement('a')
+  link.href = dataURL ?? ''
+  link.download = `signature-${nanoid()?.slice(0, 4)}`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
 }
 
 function handleAddWaterMark() {
@@ -461,7 +485,7 @@ onMounted(() => {
               </button>
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
-                @click="handleSaveSignature"
+                @click="handleSaveSignature('image/jpeg')"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                   <path
@@ -533,7 +557,7 @@ onMounted(() => {
               </button>
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
-                @click="handleSaveSignatureLaptop"
+                @click="handleSaveSignatureLaptop()"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                   <path
@@ -903,7 +927,7 @@ function handleSaveSignature() {
               </button>
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
-                @click="handleSaveWaterMarkSignature"
+                @click="handleSaveWaterMarkSignature()"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                   <path
@@ -939,7 +963,7 @@ function handleSaveSignature() {
               </button>
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
-                @click="handleSaveSignatureWaterMarkTablet"
+                @click="handleSaveSignatureWaterMarkTablet()"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                   <path
@@ -975,7 +999,7 @@ function handleSaveSignature() {
               </button>
               <button
                 type="button" class="grid p-2 bg-white rounded-md shadow-md place-items-center"
-                @click="handleSaveSignatureWaterMarkLaptop"
+                @click="handleSaveSignatureWaterMarkLaptop()"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                   <path
