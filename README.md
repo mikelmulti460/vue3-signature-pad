@@ -56,7 +56,7 @@ const handleUndo = () => {
 };
 
 const handleDisabled = () => {
-    return state.disabled = !state.disabled;
+    return state.value.disabled = !state.value.disabled;
 };
 
 const handleFromDataURL = (url: string) => {
