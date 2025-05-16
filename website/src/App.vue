@@ -44,7 +44,7 @@ function handleClearCanvasLaptop() {
 }
 
 function handleSaveSignatureLaptop(format?: string) {
-  return signatureLaptop.value?.saveSignature(format)
+  return alert(signatureLaptop.value?.saveSignature(format))
 }
 
 function handleUndoTablet() {
@@ -56,7 +56,7 @@ function handleClearCanvasTablet() {
 }
 
 function handleSaveSignatureTablet() {
-  return signatureTablet.value?.saveSignature()
+  return alert(signatureTablet.value?.saveSignature())
 }
 
 function handleUndo() {
@@ -68,7 +68,7 @@ function handleClearCanvas() {
 }
 
 function handleSaveSignature(format: string) {
-  return signature.value?.saveSignature(format)
+  return alert(signature.value?.saveSignature(format))
 }
 
 function handleUndoWaterMarkLaptop() {
@@ -80,7 +80,7 @@ function handleClearCanvasWaterMarkLaptop() {
 }
 
 function handleSaveSignatureWaterMarkLaptop(format?: string) {
-  return signatureWaterMarkLaptop.value?.saveSignature(format)
+  return alert(signatureWaterMarkLaptop.value?.saveSignature(format))
 }
 
 function handleUndoWaterMarkTablet() {
@@ -92,7 +92,7 @@ function handleClearCanvasWaterMarkTablet() {
 }
 
 function handleSaveSignatureWaterMarkTablet(format?: string) {
-  return signatureWaterMarkTablet.value?.saveSignature(format)
+  return alert(signatureWaterMarkTablet.value?.saveSignature(format))
 }
 
 function handleWaterMarkUndo() {
@@ -104,7 +104,7 @@ function handleClearWaterMarkCanvas() {
 }
 
 function handleSaveWaterMarkSignature(format?: string) {
-  return signatureWaterMark.value?.saveSignature(format)
+  return alert(signatureWaterMark.value?.saveSignature(format))
 }
 
 function handleAddWaterMark() {

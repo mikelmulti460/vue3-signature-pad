@@ -46,7 +46,7 @@ const activeColor = ref();
 const signature = ref();
 
 const handleSave = (format?: string) => {
-  return signature.value.saveSignature(format)
+  return alert(signature.value.saveSignature(format))
 };
 const handleClear = () => {
   return signature.value.clearCanvas()
