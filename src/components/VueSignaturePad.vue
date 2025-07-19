@@ -56,6 +56,11 @@ function clearCanvas() {
   return canvasOptions.value.signaturePad.clear()
 }
 
+function getStrokeData() {
+  return canvasOptions.value.signaturePad.toData()
+}
+
+
 const canvas = document.getElementById(canvasOptions.value.canvasUuid) as HTMLCanvasElement
 
 function fromDataURL(url: string) {
@@ -210,6 +215,7 @@ defineExpose({
   isCanvasEmpty,
   fromDataURL,
   undo,
+  getStrokeData,
 })
 
 onMounted(() => {
