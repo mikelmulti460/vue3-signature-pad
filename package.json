@@ -42,7 +42,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "generate:release": "npx changelogen@latest --release && npm publish",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
